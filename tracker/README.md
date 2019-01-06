@@ -1,13 +1,12 @@
 # Object Tracker
- 
-------------
+```
     ├── README.md
-    ├── tracker_example.sh              : Script for running the example directly
-    ├── tracker_example.ipynb           : Notebook for running the example step by step 
+    ├── tracker_example.sh              : Script for running the example directly
+    ├── tracker_example.ipynb           : Notebook for running the example step by step 
     ├── gen_valid_annotation.py         : Implementation of filtering valid bounding boxes 
-    ├── tracker.py                      : Implementation of object tracking
-    └── plot_tracked_bboxes.py          : Implementation of visualizing object tracking result
-    
+    ├── tracker.py                      : Implementation of object tracking
+    └── plot_tracked_bboxes.py          : Implementation of visualizing object tracking result
+```
 
 
 # Introduction

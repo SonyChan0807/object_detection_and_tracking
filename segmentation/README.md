@@ -1,6 +1,5 @@
 # Segmentation Meta
- 
-
+```
     ├── README.md                         
     ├── plot_segmentation.ipynb         : Visualize segmentation meta from Labelbox  and convert it to 2-D numpy array
     ├── plot_trajectory.ipynb           : Plot trajectory on the image of semantic segmentation
@@ -8,7 +7,7 @@
     ├── segmentation_meta_labelbox.json : Segmentation meta from Labelbox that is used by plot_segmentation.ipynb 
     ├── trajectory_output/              : Output folder of plot_trajectory.ipynb
     └── segmentation_output/            : Output folder of plot_segmentation.ipynb
-    
+```  
 # Introduction
 
 **1. plot_segmentation.ipynb** converts annotations of   semantic segmentation which are in polygon coordinates to color images and 2-D numpy array that could be used as input of metadata while training a model.
@@ -20,6 +19,6 @@
 
 Note: `example.gif` in `trajectory_output` was created by other application.
 
-### Example of the output:
+#### Example of the output:
 <img src="trajectory_output/example.gif" width="800">
 

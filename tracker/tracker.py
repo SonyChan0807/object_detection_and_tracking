@@ -56,7 +56,7 @@ def merge_trajectories(df):
             y_n = df.loc[(df['id'] ==idx_n) & (df['frame'] == s_n) ]['yc'].values[0]
             dist = math.sqrt((x-x_n)**2 + (y-y_n)**2)
             # If distance between the centers of two bounding boxes is less than 10 pixel 
-            if dist < 5:
+            if dist < 10:
                 wrong_list.append((idx,idx_n))
                 wrong_idxs.append(idx)
                 # print("id:{}, id_n{}".format(idx, idx_n))
