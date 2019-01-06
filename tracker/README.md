@@ -36,9 +36,9 @@ There are two directories and two files in tracker.tar.gz
 ### 2. Filter out the bounding boxes that lay on the desired areas of the scene
 **Script:** `gen_valid_annotation.py`
 
-Use semantic segmentation to remove the objects that are not in 
+Use semantic segmentation to remove the objects that are not in interested regions.
 
-**Usage:**
+**Usage:**
 ```
 usage: gen_valid_annotation.py [-h] [--img_w IMG_W] [--img_h IMG_H]
                                [--folder FOLDER] [--seg_path SEG_PATH]
