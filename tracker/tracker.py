@@ -55,7 +55,7 @@ def merge_trajectories(df):
             x_n = df.loc[(df['id'] ==idx_n) & (df['frame'] == s_n) ]['xc'].values[0]
             y_n = df.loc[(df['id'] ==idx_n) & (df['frame'] == s_n) ]['yc'].values[0]
             dist = math.sqrt((x-x_n)**2 + (y-y_n)**2)
-            # If distance between the centers of two bounding boxes is less than 20 pixel 
+            # If distance between the centers of two bounding boxes is less than 10 pixel 
             if dist < 5:
                 wrong_list.append((idx,idx_n))
                 wrong_idxs.append(idx)
@@ -145,16 +145,6 @@ def linear_interpolation(df):
 if __name__ == "__main__":
 
     # Parse arguments
-    # in_filepath = sys.argv[1] 
-    # max_distance = 100
-    # max_lifetime = 20
-    # img_w = 3840
-    # img_h = 2160
-    # start_frame = 1
-    # class_infer = True
-    # linear_infer = True
-    # track_cls = "0,1,2,3,4"
-    
     parser = argparse.ArgumentParser()
     parser.add_argument('--input', '-i', type=str, help='Annotation txt file path')
     parser.add_argument('--img_w', '-iw', type=int, default=3840, help='Image width Default=3480')
@@ -170,8 +160,6 @@ if __name__ == "__main__":
 
     opt = parser.parse_args()
 
-
-    
     # Load annotation from file
     df = textfile_to_array(opt.input, opt.img_w, opt.img_h, float)
     df = sorted(df, key=lambda x : x[0])

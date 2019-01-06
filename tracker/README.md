@@ -139,8 +139,8 @@ optional arguments:
   --font_size FONT_SIZE, -fs FONT_SIZE
                         Text size default=30
   --hide_linear_interpolation, -hl
-                        Hide the bounding boxes that were inferred by linear
-                        interpolation
+                        Set color the inferred bounding to be identical with
+                        the original one
 ```
 
 ## Tracker output format

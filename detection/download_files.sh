@@ -9,7 +9,6 @@ destination_path="${destination_dir}${file_name}"
 curl -c ./cookie -s -L "https://drive.google.com/uc?export=download&id=${gfileid}" > /dev/null
 curl -Lb ./cookie "https://drive.google.com/uc?export=download&confirm=`awk '/download/ {print $NF}' ./cookie`&id=${gfileid}" -o ${destination_path}
 
-
 echo "Downloading aerial_dataset_version2.tar.gz...."
 gfileid="1rUcUKc8Vgs8wERgDnG1FfHHDl8Q7hu-I"
 destination_dir="./"

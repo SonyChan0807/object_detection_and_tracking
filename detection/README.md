@@ -1,19 +1,20 @@
 # Object Detection
  
-------------
+
     ├── README.md
-    ├── darknet                     : Implementation of yolo in C++ (For training the model)
-    ├── yolov3                      : Implementation of yolo in PyTorch 0.41 (For inferring the images)
-    └── download_files.sh         : Script to download the trained weights, example images and  dataset to train the model
+    ├── darknet            : Implementation of yolo in C++ (For training the model)
+    ├── yolov3             : Implementation of yolo in PyTorch 0.41 (For inferring the images)
+    └── download_files.sh  : Script to download the trained weights, example images and  dataset to train the model
 
 
 # Introduction
 
-The object detection is done by using [Yolov3](https://pjreddie.com/darknet/yolo/). 
+The object detection is done by [Yolov3](https://pjreddie.com/darknet/yolo/). 
 
 To train the model from scratch, please follow the following steps or use trained model, skip step 2. 
 
-The dataset (about 7GB) to train the model is available [here]().
+The aerail_dataset (about 7GB) to train the model is available [here](https://drive.google.com/open?id=1rUcUKc8Vgs8wERgDnG1FfHHDl8Q7hu-I).
+
 The trained model is available [here]().
 
 ## 1. Download files
