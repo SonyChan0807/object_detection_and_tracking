@@ -75,6 +75,7 @@ Algorithm: Hungarian algorithm using distance matrix among bounding boxes
 ```
 usage: tracker.py [-h] [--input INPUT] [--img_w IMG_W] [--img_h IMG_H]
                   [--max_distance MAX_DISTANCE] [--max_frame MAX_FRAME]
+                  [--joint_distance JOINT_DISTANCE]
                   [--start_frame START_FRAME] [--track_cls TRACK_CLS]
                   [--class_infer] [--linear_infer]
 
@@ -91,6 +92,9 @@ optional arguments:
                         Default=100
   --max_frame MAX_FRAME, -mf MAX_FRAME
                         Max frame to track bounding box Default=20
+  --joint_distance JOINT_DISTANCE, -jd JOINT_DISTANCE
+                        Merge path if two distinct path are close enough
+                        Default=20
   --start_frame START_FRAME, -sf START_FRAME
                         Frame number where to start tracking Default=1
   --track_cls TRACK_CLS, -tc TRACK_CLS

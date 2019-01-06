@@ -37,7 +37,7 @@ def textfile_to_array(file_name, img_w, img_h, dtype=float):
 def get_bbox_position(arr, dtype=float):
     return dtype(arr[0]+arr[2]/2), dtype(arr[1]+arr[3])
 
-def merge_trajectories(df):
+def merge_trajectories(df, joint_distance):
     
     idxs = pd.unique(df["id"])
     id_ranges = [(idx, df.loc[df['id'] ==idx]["frame"].min(), df.loc[df['id'] == idx]["frame"].max()) for idx in idxs]
@@ -55,11 +55,11 @@ def merge_trajectories(df):
             x_n = df.loc[(df['id'] ==idx_n) & (df['frame'] == s_n) ]['xc'].values[0]
             y_n = df.loc[(df['id'] ==idx_n) & (df['frame'] == s_n) ]['yc'].values[0]
             dist = math.sqrt((x-x_n)**2 + (y-y_n)**2)
-            # If distance between the centers of two bounding boxes is less than 10 pixel 
-            if dist < 10:
+            # If distance between the centers of two bounding boxes is less than joint distance 
+            if dist < joint_distance:
                 wrong_list.append((idx,idx_n))
                 wrong_idxs.append(idx)
-                # print("id:{}, id_n{}".format(idx, idx_n))
+                print("id:{}, id_n{}".format(idx, idx_n))
     
     # Trace the linkages among the wrong trajectories 
     # Eg. 11 <- 34 , 34 <- 44, Both 34 and 44 need to be assign to 11.
@@ -77,7 +77,7 @@ def merge_trajectories(df):
                     correct_dict[w_idx].append(wn_idx)
                 reassigned.append(wn_idx)
                 pre_w_idx = wn_idx
-    # print(correct_dict)
+    print(correct_dict)
     
     # Assign wrong id to correct one
     for k, idx_list in correct_dict.items():
@@ -151,6 +151,7 @@ if __name__ == "__main__":
     parser.add_argument('--img_h', '-ih', type=int, default= 2160, help='Image height Default=2160')
     parser.add_argument('--max_distance', '-md', type=int, default=100, help='Max distance between consecutive bounding boxes  Default=100')
     parser.add_argument('--max_frame', '-mf', type=int, default=20, help='Max frame to track bounding box Default=20')
+    parser.add_argument('--joint_distance', '-jd', type=int, default=20, help='Merge path if two distinct path are close enough Default=20')
     parser.add_argument('--start_frame', '-sf', type=int, default=1, help='Frame number where to start tracking Default=1 ')
     parser.add_argument('--track_cls', '-tc', type=str, default="0,1,2,3,4", help='Class number to track Default="0,1,2,3,4"')
     parser.add_argument('--class_infer', '-ci',
@@ -282,7 +283,7 @@ if __name__ == "__main__":
     df = df.astype(int)
 
     print("Merge wrongly separeted trajectories....")
-    df = merge_trajectories(df)
+    df = merge_trajectories(df, opt.joint_distance)
     
     # Enhance the result
     # Use major vote to unify the class of an id
